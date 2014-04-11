@@ -54,12 +54,21 @@
         
         //Save button
         UIButton *saveBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-        [saveBtn setFrame:CGRectMake(100,60,100,20)];
+        [saveBtn setFrame:CGRectMake(100,60,50,20)];
         saveBtn.backgroundColor = [UIColor grayColor];
         [saveBtn addTarget:self action:@selector(savePress:) forControlEvents:UIControlEventTouchUpInside];
         [saveBtn setTitle: @"Save" forState:UIControlStateNormal];
         [saveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [cell addSubview:saveBtn];
+        
+        //Load button
+        UIButton *loadBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+        [loadBtn setFrame:CGRectMake(155,60,50,20)];
+        loadBtn.backgroundColor = [UIColor grayColor];
+        [loadBtn addTarget:self action:@selector(loadPress:) forControlEvents:UIControlEventTouchUpInside];
+        [loadBtn setTitle: @"Load" forState:UIControlStateNormal];
+        [loadBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [cell addSubview:loadBtn];
         
         //Reset button
         UIButton *resetBtn=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -104,6 +113,10 @@
 }
 
 -(void)savePress:(id)sender {
+    
+}
+
+-(void)loadPress:(id)sender {
     
 }
 
