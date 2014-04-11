@@ -34,29 +34,65 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 25;
+    return 26;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
+    if(indexPath.row == 25)
+    {
+        //Play/Pause button
+        UIButton *playPauseBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+        [playPauseBtn setFrame:CGRectMake(100,30,100,20)];
+        playPauseBtn.backgroundColor = [UIColor grayColor];
+        [playPauseBtn addTarget:self action:@selector(playPausePress:) forControlEvents:UIControlEventTouchUpInside];
+        [playPauseBtn setTitle: @"Play/Pause" forState:UIControlStateNormal];
+        [playPauseBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [cell addSubview:playPauseBtn];
+        
+        //Save button
+        UIButton *saveBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+        [saveBtn setFrame:CGRectMake(100,60,100,20)];
+        saveBtn.backgroundColor = [UIColor grayColor];
+        [saveBtn addTarget:self action:@selector(savePress:) forControlEvents:UIControlEventTouchUpInside];
+        [saveBtn setTitle: @"Save" forState:UIControlStateNormal];
+        [saveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [cell addSubview:saveBtn];
+        
+        //Reset button
+        UIButton *resetBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+        [resetBtn setFrame:CGRectMake(100,90,100,20)];
+        resetBtn.backgroundColor = [UIColor grayColor];
+        [resetBtn addTarget:self action:@selector(resetPress:) forControlEvents:UIControlEventTouchUpInside];
+        [resetBtn setTitle: @"Reset" forState:UIControlStateNormal];
+        [resetBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [cell addSubview:resetBtn];
+    }
+    else
+    {
+        UIButton *newBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+        [newBtn setFrame:CGRectMake(0,0,50,50)];
+        newBtn.backgroundColor = [UIColor grayColor];
+        [newBtn addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [cell addSubview:newBtn];
+    }
     
-    UIButton *newBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    [newBtn setFrame:CGRectMake(0,0,50,50)];
-    newBtn.backgroundColor = [UIColor grayColor];
-    [newBtn addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [cell addSubview:newBtn];
-    
-    cell.backgroundColor=[UIColor whiteColor];
+    cell.backgroundColor=[UIColor blackColor];
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(indexPath.row == 25)
+    {
+        return CGSizeMake(310,150);
+    }
     return CGSizeMake(50, 50);
 }
+
 
 -(void)buttonPress:(id)sender {
     UIButton *button = sender;
@@ -66,5 +102,18 @@
     else
         button.backgroundColor = [UIColor grayColor];
 }
+
+-(void)savePress:(id)sender {
+    
+}
+
+-(void)playPausePress:(id)sender {
+    
+}
+
+-(void)resetPress:(id)sender {
+    
+}
+
 
 @end
