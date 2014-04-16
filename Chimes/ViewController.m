@@ -113,11 +113,46 @@
 }
 
 -(void)savePress:(id)sender {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    [[NSFileManager defaultManager] createFileAtPath:@"chimes_savefile.txt" contents:[NSData data] attributes:nil];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"chimes_savefile.txt"];
     
+    NSMutableString *str = [NSMutableString string];
+    for(int i = 0; i < _collectionView.visibleCells.count; i++) {
+        UICollectionViewCell *cell = _collectionView.visibleCells[i];
+        if(cell.subviews.count == 2) {
+            UIButton *button = cell.subviews[1];
+            if(button.backgroundColor == [UIColor grayColor]) {
+                [str appendString:@"0"];
+            } else {
+                [str appendString:@"1"];
+            }
+        }
+    }
+    [str writeToFile:filePath atomically:TRUE encoding:NSUTF8StringEncoding error:NULL];
 }
 
 -(void)loadPress:(id)sender {
-    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"chimes_savefile.txt"];
+    NSString *str = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+    int cellIndex = 0;
+    for(int i = 0; i < str.length; i++) {
+        //Necessary because bottom cell is index 13
+        if(i >= 13)
+            cellIndex = i + 1;
+        else
+            cellIndex = i;
+        unichar character = [str characterAtIndex:i];
+        UICollectionViewCell *cell = _collectionView.visibleCells[cellIndex];
+        UIButton *button = cell.subviews[1];
+        if(character == '0')
+            button.backgroundColor = [UIColor grayColor];
+        else if(character == '1')
+            button.backgroundColor = [UIColor redColor];
+    }
 }
 
 -(void)playPausePress:(id)sender {
@@ -125,7 +160,12 @@
 }
 
 -(void)resetPress:(id)sender {
-    
+    for(UICollectionViewCell *cell in _collectionView.visibleCells) {
+        if(cell.subviews.count == 2) {
+            UIButton *button = cell.subviews[1];
+            button.backgroundColor = [UIColor grayColor];
+        }
+    }
 }
 
 
