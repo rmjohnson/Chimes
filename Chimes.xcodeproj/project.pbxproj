@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		56871BAC1907483200D034B2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56871BAB1907483200D034B2 /* AVFoundation.framework */; };
 		56871BAE1907491700D034B2 /* beep-piano.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56871BAD1907491700D034B2 /* beep-piano.wav */; };
+		56871BB41907645B00D034B2 /* c.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56871BAF1907645A00D034B2 /* c.wav */; };
+		56871BB51907645B00D034B2 /* c2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56871BB01907645B00D034B2 /* c2.wav */; };
+		56871BB61907645B00D034B2 /* e.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56871BB11907645B00D034B2 /* e.wav */; };
+		56871BB71907645B00D034B2 /* e2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56871BB21907645B00D034B2 /* e2.wav */; };
+		56871BB81907645B00D034B2 /* g.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56871BB31907645B00D034B2 /* g.wav */; };
 		56B30ACE18EE40B200F0AABF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B30ACD18EE40B200F0AABF /* Foundation.framework */; };
 		56B30AD018EE40B200F0AABF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B30ACF18EE40B200F0AABF /* CoreGraphics.framework */; };
 		56B30AD218EE40B200F0AABF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B30AD118EE40B200F0AABF /* UIKit.framework */; };
@@ -38,6 +43,11 @@
 /* Begin PBXFileReference section */
 		56871BAB1907483200D034B2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		56871BAD1907491700D034B2 /* beep-piano.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "beep-piano.wav"; sourceTree = "<group>"; };
+		56871BAF1907645A00D034B2 /* c.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = c.wav; sourceTree = "<group>"; };
+		56871BB01907645B00D034B2 /* c2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = c2.wav; sourceTree = "<group>"; };
+		56871BB11907645B00D034B2 /* e.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = e.wav; sourceTree = "<group>"; };
+		56871BB21907645B00D034B2 /* e2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = e2.wav; sourceTree = "<group>"; };
+		56871BB31907645B00D034B2 /* g.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = g.wav; sourceTree = "<group>"; };
 		56B30ACA18EE40B200F0AABF /* Chimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B30ACD18EE40B200F0AABF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		56B30ACF18EE40B200F0AABF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -118,6 +128,11 @@
 		56B30AD318EE40B200F0AABF /* Chimes */ = {
 			isa = PBXGroup;
 			children = (
+				56871BAF1907645A00D034B2 /* c.wav */,
+				56871BB01907645B00D034B2 /* c2.wav */,
+				56871BB11907645B00D034B2 /* e.wav */,
+				56871BB21907645B00D034B2 /* e2.wav */,
+				56871BB31907645B00D034B2 /* g.wav */,
 				56871BAD1907491700D034B2 /* beep-piano.wav */,
 				56B30ADC18EE40B200F0AABF /* AppDelegate.h */,
 				56B30ADD18EE40B200F0AABF /* AppDelegate.m */,
@@ -235,8 +250,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56871BB41907645B00D034B2 /* c.wav in Resources */,
+				56871BB71907645B00D034B2 /* e2.wav in Resources */,
 				56B30AE618EE40B200F0AABF /* Images.xcassets in Resources */,
+				56871BB81907645B00D034B2 /* g.wav in Resources */,
 				56B30AD818EE40B200F0AABF /* InfoPlist.strings in Resources */,
+				56871BB61907645B00D034B2 /* e.wav in Resources */,
+				56871BB51907645B00D034B2 /* c2.wav in Resources */,
 				56871BAE1907491700D034B2 /* beep-piano.wav in Resources */,
 				56B30AE118EE40B200F0AABF /* Main.storyboard in Resources */,
 			);

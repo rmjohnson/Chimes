@@ -14,7 +14,12 @@
     UICollectionView *_collectionView;
     NSMutableArray *buttons;
     int timerCount;
-    AVAudioPlayer *theAudio;
+    AVAudioPlayer *audio0;
+    AVAudioPlayer *audio1;
+    AVAudioPlayer *audio2;
+    AVAudioPlayer *audio3;
+    AVAudioPlayer *audio4;
+    NSTimer *timer;
 }
 @end
 

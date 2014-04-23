@@ -29,14 +29,26 @@
     
     [self.view addSubview:_collectionView];
     
-    buttons =[[NSMutableArray alloc] init];
+    buttons = [[NSMutableArray alloc] init];
+    for(int i = 0; i < 25; i++) {
+        [buttons addObject:[NSNull null]];
+    }
     
     NSError *error;
-    theAudio = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"beep-piano"ofType:@"wav"]] error:&error];
-    if (error){
-        NSLog(@"%@", [error localizedDescription]);
-    }
-    theAudio.delegate = self;
+    audio0 = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"e2"ofType:@"wav"]] error:&error];
+    audio0.delegate = self;
+    
+    audio1 = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"c2"ofType:@"wav"]] error:&error];
+    audio1.delegate = self;
+    
+    audio2 = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"g"ofType:@"wav"]] error:&error];
+    audio2.delegate = self;
+    
+    audio3 = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"e"ofType:@"wav"]] error:&error];
+    audio3.delegate = self;
+    
+    audio4 = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"c"ofType:@"wav"]] error:&error];
+    audio4.delegate = self;
 
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -96,8 +108,10 @@
         newBtn.backgroundColor = [UIColor grayColor];
         [newBtn addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchUpInside];
         
+        NSInteger columnPositions[25] = { 0, 5, 10, 15, 20, 1, 6, 11, 16, 21, 2, 7, 12, 17, 22, 3, 8, 13, 18, 23, 4, 9, 14, 19, 24 };
+        
         [cell addSubview:newBtn];
-        [buttons addObject:newBtn];
+        [buttons replaceObjectAtIndex:columnPositions[indexPath.row] withObject:newBtn];
     }
     
     cell.backgroundColor=[UIColor blackColor];
@@ -116,8 +130,6 @@
 
 -(void)buttonPress:(id)sender {
     UIButton *button = sender;
-    
-    [theAudio play];
     
     //Use background color of button to track button state (on or off)
     if(button.backgroundColor == [UIColor grayColor])
@@ -170,14 +182,33 @@
 }
 
 -(void)playPausePress:(id)sender {
-    timerCount = 0;
-    [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
-    while(timerCount < buttons.count) {
-        UIButton *button = buttons[timerCount];
-        if(button.backgroundColor == [UIColor redColor])
-        {
-            button.backgroundColor = [UIColor blueColor];
-        }
+    if(timer == nil) {
+        timerCount = 0;
+        timer = [NSTimer timerWithTimeInterval:0.2 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            while(timerCount < buttons.count - 1 && timer != nil) {
+                UIButton *button = buttons[timerCount];
+                if(button.backgroundColor == [UIColor redColor]) {
+                    if(timerCount % 5 == 0)
+                        [audio0 play];
+                    else if(timerCount % 5 == 1)
+                        [audio1 play];
+                    else if(timerCount % 5 == 2)
+                        [audio2 play];
+                    else if(timerCount % 5 == 3)
+                        [audio3 play];
+                    else if(timerCount % 5 == 4)
+                        [audio4 play];
+                        
+                }
+                if(timerCount == buttons.count - 1)
+                    timerCount = 0;
+            }
+        });
+    } else {
+        [timer invalidate];
+        timer = nil;
     }
 }
 
@@ -192,7 +223,6 @@
 
 - (void) tick:(NSTimer *) timer {
     timerCount++;
-    NSLog(@"%d",timerCount);
 }
 
 @end
