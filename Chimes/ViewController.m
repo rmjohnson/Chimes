@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController ()
 
@@ -28,6 +29,15 @@
     
     [self.view addSubview:_collectionView];
     
+    buttons =[[NSMutableArray alloc] init];
+    
+    NSError *error;
+    theAudio = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"beep-piano"ofType:@"wav"]] error:&error];
+    if (error){
+        NSLog(@"%@", [error localizedDescription]);
+    }
+    theAudio.delegate = self;
+
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -87,6 +97,7 @@
         [newBtn addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchUpInside];
         
         [cell addSubview:newBtn];
+        [buttons addObject:newBtn];
     }
     
     cell.backgroundColor=[UIColor blackColor];
@@ -105,6 +116,9 @@
 
 -(void)buttonPress:(id)sender {
     UIButton *button = sender;
+    
+    [theAudio play];
+    
     //Use background color of button to track button state (on or off)
     if(button.backgroundColor == [UIColor grayColor])
         button.backgroundColor = [UIColor redColor];
@@ -156,7 +170,15 @@
 }
 
 -(void)playPausePress:(id)sender {
-    
+    timerCount = 0;
+    [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+    while(timerCount < buttons.count) {
+        UIButton *button = buttons[timerCount];
+        if(button.backgroundColor == [UIColor redColor])
+        {
+            button.backgroundColor = [UIColor blueColor];
+        }
+    }
 }
 
 -(void)resetPress:(id)sender {
@@ -168,5 +190,9 @@
     }
 }
 
+- (void) tick:(NSTimer *) timer {
+    timerCount++;
+    NSLog(@"%d",timerCount);
+}
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56871BAC1907483200D034B2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56871BAB1907483200D034B2 /* AVFoundation.framework */; };
+		56871BAE1907491700D034B2 /* beep-piano.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56871BAD1907491700D034B2 /* beep-piano.wav */; };
 		56B30ACE18EE40B200F0AABF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B30ACD18EE40B200F0AABF /* Foundation.framework */; };
 		56B30AD018EE40B200F0AABF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B30ACF18EE40B200F0AABF /* CoreGraphics.framework */; };
 		56B30AD218EE40B200F0AABF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B30AD118EE40B200F0AABF /* UIKit.framework */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		56871BAB1907483200D034B2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		56871BAD1907491700D034B2 /* beep-piano.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "beep-piano.wav"; sourceTree = "<group>"; };
 		56B30ACA18EE40B200F0AABF /* Chimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B30ACD18EE40B200F0AABF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		56B30ACF18EE40B200F0AABF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56871BAC1907483200D034B2 /* AVFoundation.framework in Frameworks */,
 				56B30AD018EE40B200F0AABF /* CoreGraphics.framework in Frameworks */,
 				56B30AD218EE40B200F0AABF /* UIKit.framework in Frameworks */,
 				56B30ACE18EE40B200F0AABF /* Foundation.framework in Frameworks */,
@@ -101,6 +106,7 @@
 		56B30ACC18EE40B200F0AABF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56871BAB1907483200D034B2 /* AVFoundation.framework */,
 				56B30ACD18EE40B200F0AABF /* Foundation.framework */,
 				56B30ACF18EE40B200F0AABF /* CoreGraphics.framework */,
 				56B30AD118EE40B200F0AABF /* UIKit.framework */,
@@ -112,6 +118,7 @@
 		56B30AD318EE40B200F0AABF /* Chimes */ = {
 			isa = PBXGroup;
 			children = (
+				56871BAD1907491700D034B2 /* beep-piano.wav */,
 				56B30ADC18EE40B200F0AABF /* AppDelegate.h */,
 				56B30ADD18EE40B200F0AABF /* AppDelegate.m */,
 				56B30ADF18EE40B200F0AABF /* Main.storyboard */,
@@ -230,6 +237,7 @@
 			files = (
 				56B30AE618EE40B200F0AABF /* Images.xcassets in Resources */,
 				56B30AD818EE40B200F0AABF /* InfoPlist.strings in Resources */,
+				56871BAE1907491700D034B2 /* beep-piano.wav in Resources */,
 				56B30AE118EE40B200F0AABF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +468,7 @@
 				56B30AFE18EE40B200F0AABF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		56B30AFF18EE40B200F0AABF /* Build configuration list for PBXNativeTarget "ChimesTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +477,7 @@
 				56B30B0118EE40B200F0AABF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
