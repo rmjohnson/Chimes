@@ -182,33 +182,38 @@
 }
 
 -(void)playPausePress:(id)sender {
-    if(timer == nil) {
+    if(playing == false) {
         timerCount = 0;
-        timer = [NSTimer timerWithTimeInterval:0.2 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
-        [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        playing = true;
+        //timer = [NSTimer timerWithTimeInterval:0.2 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+        //[[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            while(timerCount < buttons.count - 1 && timer != nil) {
-                UIButton *button = buttons[timerCount];
+            //while(timerCount < buttons.count - 1 && timer != nil) {
+            for(int i = 0; i < buttons.count && playing; i++) {
+                UIButton *button = buttons[i];
                 if(button.backgroundColor == [UIColor redColor]) {
-                    if(timerCount % 5 == 0)
+                    if(i % 5 == 0)
                         [audio0 play];
-                    else if(timerCount % 5 == 1)
+                    else if(i % 5 == 1)
                         [audio1 play];
-                    else if(timerCount % 5 == 2)
+                    else if(i % 5 == 2)
                         [audio2 play];
-                    else if(timerCount % 5 == 3)
+                    else if(i % 5 == 3)
                         [audio3 play];
-                    else if(timerCount % 5 == 4)
+                    else if(i % 5 == 4)
                         [audio4 play];
-                        
                 }
-                if(timerCount == buttons.count - 1)
-                    timerCount = 0;
+                if(i % 5 == 4)
+                    [NSThread sleepForTimeInterval:1.2];
+                if(i == buttons.count - 1)
+                    i = 0;
+                //[NSThread sleepForTimeInterval:1];
             }
         });
     } else {
-        [timer invalidate];
-        timer = nil;
+        //[timer invalidate];
+        //timer = nil;
+        playing = false;
     }
 }
 

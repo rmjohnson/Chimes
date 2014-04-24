@@ -20,6 +20,7 @@
     AVAudioPlayer *audio3;
     AVAudioPlayer *audio4;
     NSTimer *timer;
+    bool playing;
 }
 @end
 
